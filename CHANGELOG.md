@@ -17,3 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Cambio para mergear a Produccion
 
 
+## [1.0.3] - 2025-02-15
+### Added
+- Cambio para mergear a Master
+
+
