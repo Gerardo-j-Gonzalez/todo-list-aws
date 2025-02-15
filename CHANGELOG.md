@@ -21,4 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Cambio para mergear a Master
 
+## [1.0.4] - 2025-02-15
+### Added
+- Cambio para probar agentes
+
 
