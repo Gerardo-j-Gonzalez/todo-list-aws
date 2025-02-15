@@ -34,26 +34,8 @@ pipeline {
                     sh 'sam build' 
                     // Se hace la validacion de SAM
                     sh 'sam validate --region us-east-1' 
-                    echo "Se verifica si el stack esta en estado ROLLBACK_COMPLETE..." 
- 
-                    // Verificar si el stack esta en estado ROLLBACK_COMPLETE 
-                    def stackStatus = sh( 
-                    script: """ 
-                    aws cloudformation describe-stacks --stack-name todo-list-aws-staging --region us-east-1 \
-                        --query 'Stacks[0].StackStatus' --output text || echo 'STACK_NOT_FOUND'
-                    """,
-                        returnStdout: true 
-                    ).trim() 
- 
-                    if (stackStatus == "ROLLBACK_COMPLETE") { 
-                        echo "El Stack se encuentra en estado ROLLBACK_COMPLETE. Se elimina antes de desplegar" 
-                        sh "aws cloudformation delete-stack --stack-name todo-list-aws-staging --region us-east-1" 
-                        sh "aws cloudformation wait stack-delete-complete --stack-name todo-list-aws-staging --region us-east-1" 
-                    } else { 
-                        echo "Stack correcto: ${stackStatus}. Seguimos con el despliegue" 
-                    } 
- 
-                // Desplegamos utilizando la configuracion 'staging' que esta en samconfig.toml 
+
+                    // Desplegamos utilizando la configuracion 'staging' que esta en samconfig.toml 
 
                     sh '''
                     sam deploy \
@@ -101,7 +83,6 @@ pipeline {
                                 /usr/bin/python3 -m pytest --version 
                                 /usr/bin/python3 -m pytest -s -v --junitxml=result-integration.xml test/integration/todoApiTest.py | tee result-integration.log 
                             ''' 
-//                                /usr/bin/python3 -m pytest -s -v --junitxml=result-integration.xml test/integration | tee result-integration.log 
 
 
                         } 
@@ -156,10 +137,10 @@ pipeline {
                             git pull --rebase origin master 
                         ''' 
  
-                        echo "Mergeaos de la rama develop a la rama master" 
+                        echo "Mergeamos de la rama develop a la rama master" 
 
                         sh ''' 
-                            git merge --no-ff develop -m "Merge automatico desde develop a master [Jenkins CI]" || true 
+                            git merge --no-ff develop -m "Mergeo automatico desde develop a master [Jenkins CI]" || true 
                             git checkout --ours CHANGELOG.md # Mantener version de develop 
                             git add CHANGELOG.md 
                             git commit -m "Resolvemos el conflicto en CHANGELOG.md manteniendo la version de develop" || true 
