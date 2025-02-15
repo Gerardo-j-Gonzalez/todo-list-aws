@@ -8,3 +8,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Versión inicial de código.
 
+## [1.0.1] - 2025-02-08
+### Added
+- Cambio para mergear a Produccion
+
+## [1.0.2] - 2025-02-09
+### Added
+- Cambio para mergear a Produccion
+
+
+## [1.0.3] - 2025-02-15
+### Added
+- Cambio para mergear a Master
+
+## [1.0.4] - 2025-02-15
+### Added
+- Cambio para probar agentes
+
+
+## [1.0.5] - 2025-02-15
+### Added
+- Cambio para probar agentes
+
+## [1.0.6] - 2025-02-15
+### Added
+- Cambio para probar agentes
+
+## [1.0.7] - 2025-02-15
+### Added
+- Cambio para probar agentes
+
+
