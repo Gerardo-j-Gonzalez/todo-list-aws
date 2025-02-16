@@ -117,7 +117,7 @@ pipeline {
             steps {
                 script {
                     unstash name:'code'
-                    echo "Promocion de la version a MAIN" 
+                    echo "Promocion de la version a MASTER" 
 
 					echo "Comprobacion de whoami y hostname en Promote"
 					sh 'whoami'
@@ -142,18 +142,18 @@ pipeline {
                             error "La rama actual es '${currentBranch}', pero se necesita la rama develop." 
                         } 
 
-                        echo "Cambiamos a la rama main" 
+                        echo "Cambiamos a la rama MASTER" 
 						
                         sh ''' 
                             git fetch origin 
-                            git checkout main 
-                            git pull --rebase origin main 
+                            git checkout master 
+                            git pull --rebase origin master 
                         ''' 
  
-                        echo "Mergeamos de la rama develop a la rama main" 
+                        echo "Mergeamos de la rama develop a la rama master" 
 
                         sh ''' 
-                            git merge --no-ff develop -m "Mergeo automatico desde develop a main [Jenkins CI]" || true 
+                            git merge --no-ff develop -m "Mergeo automatico desde develop a master [Jenkins CI]" || true 
                             git checkout --ours CHANGELOG.md # Mantener version de develop 
                             git add CHANGELOG.md 
                             git commit -m "Resolvemos el conflicto en CHANGELOG.md manteniendo la version de develop" || true 
@@ -161,10 +161,10 @@ pipeline {
  
                         echo "Subimos los cambios a GitHub con push" 
                         sh ''' 
-                            git push origin main 
+                            git push origin master 
                         ''' 
  
-                        echo "Promocion a MAIN completada" 
+                        echo "Promocion a MASTER completada" 
 
 
                     }
