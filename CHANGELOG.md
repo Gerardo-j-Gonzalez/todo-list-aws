@@ -39,3 +39,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Cambio para probar agentes
 
 
+## [1.0.8] - 2025-02-16
+### Added
+- Cambio para probar Multibranch
+
+
